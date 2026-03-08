@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>加盟店ポータルモックアップ</title>
+  <link rel="stylesheet" href="portal.css" />
+</head>
+<body>
+  <div class="portal-shell">
+    <aside class="portal-sidebar" id="sidebar">
+      <div class="portal-brand">
+        <div class="logo">MP</div>
+        <div>
+          <div class="brand-main">加盟店ポータル</div>
+          <div class="brand-sub">Mock Preview</div>
+        </div>
+      </div>
+
+      <nav class="portal-nav">
+        <button class="portal-nav-item active" data-page="home">ホーム</button>
+        <button class="portal-nav-item" data-page="store">店舗情報確認</button>
+        <button class="portal-nav-item" data-page="benefits">会員特典</button>
+        <button class="portal-nav-item" data-page="magazine">会報誌確認</button>
+        <button class="portal-nav-item" data-page="posters">掲示物・POP</button>
+        <button class="portal-nav-item" data-page="requests">改善依頼・問い合わせ</button>
+        <button class="portal-nav-item" data-page="referral">会員紹介登録</button>
+        <button class="portal-nav-item" data-page="history">通知・対応履歴</button>
+      </nav>
+
+      <div class="portal-side-box">
+        <div class="label">現在の店舗</div>
+        <div class="value">○○フラワー 川崎店</div>
+        <div class="sub">契約中 / ポータル利用中</div>
+      </div>
+    </aside>
+
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <div class="title-wrap">
+          <button id="menuToggle" class="icon-btn mobile-only">☰</button>
+          <div>
+            <h1 id="pageTitle">ホーム</h1>
+            <p id="pageDesc">やること、未回答事項、お知らせを確認します。</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-btn">サポートへ連絡</button>
+          <div class="account-chip">田中 花子 様</div>
+        </div>
+      </header>
+
+      <section class="page active" data-page="home">
+        <div class="hero">
+          <div>
+            <div class="eyebrow">Welcome</div>
+            <h2>今月の確認事項があります</h2>
+            <p>会報誌掲載内容の確認と、店頭掲示物の設置報告をお願いします。</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-page-link="magazine">会報誌確認へ</button>
+              <button class="btn btn-secondary" data-page-link="posters">掲示物報告へ</button>
+            </div>
+          </div>
+          <div class="hero-summary">
+            <div class="summary-card"><span>未対応</span><strong>2件</strong></div>
+            <div class="summary-card"><span>新着通知</span><strong>3件</strong></div>
+            <div class="summary-card"><span>紹介件数</span><strong>2件</strong></div>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-title">未対応タスク</div>
+            <div class="mini-list">
+              <div class="mini-row"><span>会報誌掲載内容の確認</span><b class="badge warning">期限 3/12</b></div>
+              <div class="mini-row"><span>掲示物設置の報告</span><b class="badge">任意</b></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">最近の通知</div>
+            <div class="mini-list">
+              <div class="mini-row"><span>4月号会報誌の確認依頼</span><b>3/1</b></div>
+              <div class="mini-row"><span>特典文言変更の反映完了</span><b>2/28</b></div>
+              <div class="mini-row"><span>掲示POP再送のお知らせ</span><b>2/15</b></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">ご利用ガイド</div>
+            <p class="muted">ポータルでの対応が難しい場合は、従来どおり電話・メールでも受け付けます。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="store">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-header"><h2>店舗情報</h2><span class="badge success">確認済み</span></div>
+            <div class="form-grid">
+              <label>店舗名<input value="○○フラワー 川崎店"></label>
+              <label>担当者<input value="田中 花子"></label>
+              <label>電話番号<input value="044-123-4567"></label>
+              <label>メールアドレス<input value="shop-kawasaki@example.jp"></label>
+              <label class="span-2">住所<input value="神奈川県川崎市川崎区..." /></label>
+              <label>営業時間<input value="9:00-18:00" /></label>
+              <label>定休日<input value="水曜日" /></label>
+              <label class="span-2">店舗紹介文<textarea>地域密着で供花・法要装花を承っております。</textarea></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-secondary">変更を下書き</button><button class="btn btn-primary">変更申請する</button></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>反映ルール</h2></div>
+            <div class="info-box">
+              <p>店舗情報の変更は送信後、運営側の確認を経て反映されます。</p>
+              <p>お急ぎの変更は電話でのご連絡も可能です。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="benefits">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-header"><h2>会員向け特典</h2><span class="badge">公開中</span></div>
+            <div class="form-grid">
+              <label class="span-2">特典名<input value="供花 5%OFF / 初回配送無料"></label>
+              <label class="span-2">特典詳細<textarea>会員証ご提示で供花を5%割引。初回配送費は無料です。</textarea></label>
+              <label>対象条件<input value="会員証提示"></label>
+              <label>利用不可日<input value="年末年始を除く" /></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-secondary">内容を保存</button><button class="btn btn-primary">変更申請する</button></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>プレビュー</h2></div>
+            <div class="preview-card">
+              <h3>○○フラワー 川崎店</h3>
+              <p>会員特典: 供花 5%OFF / 初回配送無料</p>
+              <small>※ 実際の会報誌・Web掲載イメージのダミー表示です。</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="magazine">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-header"><h2>4月号 会報誌掲載内容の確認</h2><span class="badge warning">回答待ち</span></div>
+            <div class="preview-card">
+              <h3>掲載予定文面</h3>
+              <p>地域密着で供花・法要装花を承っております。会員さまには供花5%OFFをご提供。</p>
+            </div>
+            <div class="choice-grid">
+              <button class="choice active">この内容で問題ない</button>
+              <button class="choice">修正したい</button>
+              <button class="choice">今回は掲載不要</button>
+            </div>
+            <label>ご連絡事項<textarea>修正がある場合のメモを入力する想定です（ダミー）。</textarea></label>
+            <div class="form-actions"><button class="btn btn-primary">回答を送信</button></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>スケジュール</h2></div>
+            <div class="step-list">
+              <div class="step done"><span>1</span><div><strong>確認依頼受信</strong><small>3/1</small></div></div>
+              <div class="step current"><span>2</span><div><strong>加盟店回答</strong><small>3/12締切</small></div></div>
+              <div class="step"><span>3</span><div><strong>運営確認</strong><small>3/15予定</small></div></div>
+              <div class="step"><span>4</span><div><strong>掲載確定</strong><small>3/20予定</small></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="posters">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-header"><h2>掲示物・POP</h2></div>
+            <div class="mini-list">
+              <div class="mini-row"><span>会員向け案内POP（A4）</span><b class="badge success">送付済み</b></div>
+              <div class="mini-row"><span>掲示報告</span><b class="badge warning">未報告</b></div>
+            </div>
+            <label>設置状況<select><option>掲示済み</option><option>未掲示</option><option>破損・再送希望</option></select></label>
+            <label>コメント<textarea>店舗入口右側に掲示、などのコメントを記入する想定です。</textarea></label>
+            <div class="upload-box">写真添付エリア（ダミー）</div>
+            <div class="form-actions"><button class="btn btn-primary">報告を送信</button></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>備考</h2></div>
+            <div class="info-box">
+              <p>写真添付が難しい場合は、電話でのご報告でも対応可能です。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="requests">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-header"><h2>改善依頼への回答</h2><span class="badge danger">1件対応中</span></div>
+            <div class="notice-box">
+              <strong>内容:</strong> 特典適用条件の説明がわかりにくかったとのご意見がありました。店頭案内の見直しをご確認ください。
+            </div>
+            <label>対応内容<textarea>スタッフ間で特典条件の案内方法を統一し、店頭POPにも追記しました。</textarea></label>
+            <div class="form-actions"><button class="btn btn-primary">回答を送信</button></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>運営への問い合わせ</h2></div>
+            <label>件名<input value="会報誌掲載写真の差し替えについて" /></label>
+            <label>本文<textarea>差し替え希望の写真があります。確認をお願いします。</textarea></label>
+            <div class="form-actions"><button class="btn btn-secondary">下書き保存</button><button class="btn btn-primary">送信</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="referral">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-header"><h2>会員紹介登録</h2></div>
+            <div class="form-grid">
+              <label>紹介日<input value="2026-03-08" /></label>
+              <label>被紹介者名<input value="山田 太郎" /></label>
+              <label>電話番号<input value="090-0000-0000" /></label>
+              <label>関係性<select><option>来店客</option><option>既存顧客</option><option>知人紹介</option></select></label>
+              <label class="span-2">補足<textarea>葬祭サービスに関心あり。後日担当より案内希望。</textarea></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-primary">紹介を登録</button></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>紹介履歴</h2></div>
+            <table class="table">
+              <thead><tr><th>紹介日</th><th>氏名</th><th>状態</th></tr></thead>
+              <tbody>
+                <tr><td>2026/02/10</td><td>山田 太郎</td><td><span class="badge success">成立</span></td></tr>
+                <tr><td>2026/03/01</td><td>高橋 次郎</td><td><span class="badge">確認中</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" data-page="history">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-header"><h2>通知履歴</h2></div>
+            <div class="mini-list">
+              <div class="mini-row"><span>4月号会報誌の確認依頼</span><b>2026/03/01</b></div>
+              <div class="mini-row"><span>掲示POP再送のお知らせ</span><b>2026/02/15</b></div>
+              <div class="mini-row"><span>特典内容変更の反映完了</span><b>2026/02/28</b></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>対応履歴</h2></div>
+            <div class="mini-list">
+              <div class="mini-row"><span>店舗情報変更申請</span><b>承認済み</b></div>
+              <div class="mini-row"><span>改善依頼回答</span><b>完了</b></div>
+              <div class="mini-row"><span>会員紹介登録</span><b>1件成立</b></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="portal.js"></script>
+</body>
+</html>
