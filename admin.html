@@ -1,389 +1,473 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>管理画面モックアップ</title>
-  <link rel="stylesheet" href="admin.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理画面モック</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" id="sidebar">
-      <div class="brand">
-        <div class="brand-mark">CS</div>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__logo">L</div>
         <div>
-          <div class="brand-title">加盟店・会員管理</div>
-          <div class="brand-sub">管理画面モック</div>
+          <div class="sidebar__title">LINE運用管理</div>
+          <div class="sidebar__sub">Admin Console</div>
         </div>
       </div>
 
-      <nav class="nav">
-        <button class="nav-item active" data-page="dashboard">ダッシュボード</button>
-        <button class="nav-item" data-page="merchants">加盟店一覧</button>
-        <button class="nav-item" data-page="merchant-detail">加盟店詳細</button>
-        <button class="nav-item" data-page="members">会員一覧</button>
-        <button class="nav-item" data-page="magazine">会報誌管理</button>
-        <button class="nav-item" data-page="notifications">通達配信</button>
-        <button class="nav-item" data-page="complaints">苦情・改善依頼</button>
-        <button class="nav-item" data-page="referrals">紹介管理</button>
-        <button class="nav-item" data-page="tasks">対応履歴・タスク</button>
-        <button class="nav-item" data-page="settings">マスタ・設定</button>
+      <nav class="sidebar__nav">
+        <button class="nav-link is-active" data-view="dashboardView" type="button">ダッシュボード</button>
+        <button class="nav-link" data-view="membersView" type="button">登録者一覧</button>
+        <button class="nav-link" data-view="surveySendView" type="button">定期アンケート送付</button>
+        <button class="nav-link" data-view="surveyResultsView" type="button">アンケート回答集計</button>
+        <button class="nav-link" data-view="staffView" type="button">従業員追加</button>
+        <button class="nav-link" data-view="accountView" type="button">ログイン情報変更</button>
+        <button class="nav-link" data-view="logoutView" type="button">ログアウト</button>
       </nav>
-
-      <div class="sidebar-footer">
-        <div class="user-chip">
-          <div class="avatar">A</div>
-          <div>
-            <div class="user-name">営業部 管理者</div>
-            <div class="muted">admin@example.jp</div>
-          </div>
-        </div>
-      </div>
     </aside>
 
-    <main class="main">
+    <div class="main-shell">
       <header class="topbar">
-        <div class="topbar-left">
-          <button class="icon-btn mobile-only" id="menuToggle">☰</button>
-          <div>
-            <h1 id="pageTitle">ダッシュボード</h1>
-            <p class="muted" id="pageDesc">日々の対応状況と優先タスクを確認します。</p>
-          </div>
+        <div>
+          <p class="topbar__eyebrow">運用管理画面</p>
+          <h1 id="pageTitle" class="topbar__title">ダッシュボード</h1>
         </div>
-        <div class="topbar-actions">
-          <input class="search" type="text" placeholder="加盟店名・会員名・電話番号で検索（ダミー）" />
-          <button class="btn btn-secondary">CSV出力</button>
-          <button class="btn btn-primary">新規登録</button>
+
+        <div class="topbar__user">
+          <div class="topbar__avatar">管</div>
+          <div>
+            <div class="topbar__name">管理者</div>
+            <div class="topbar__role">admin@example.jp</div>
+          </div>
         </div>
       </header>
 
-      <section class="page active" data-page="dashboard">
-        <div class="grid cols-4">
-          <div class="stat-card"><div class="stat-label">今月の定期フォロー対象</div><div class="stat-value">184</div><div class="stat-sub">うち未対応 37件</div></div>
-          <div class="stat-card"><div class="stat-label">会報誌確認待ち</div><div class="stat-value">52</div><div class="stat-sub">未回答 19件</div></div>
-          <div class="stat-card"><div class="stat-label">苦情対応中</div><div class="stat-value">8</div><div class="stat-sub">期限超過 2件</div></div>
-          <div class="stat-card"><div class="stat-label">今月の紹介成立</div><div class="stat-value">23</div><div class="stat-sub">支払予定 ¥230,000</div></div>
-        </div>
-
-        <div class="grid cols-2">
-          <div class="panel">
-            <div class="panel-header">
-              <h2>今日の優先タスク</h2>
-              <button class="text-btn" data-page-link="tasks">一覧へ</button>
+      <main class="content">
+        <section id="dashboardView" class="view is-active">
+          <div class="hero-card">
+            <div>
+              <h2 class="section-title">本日の確認事項</h2>
+              <p class="section-text">必要な対応を一覧で確認し、そのまま該当画面へ移動できます。</p>
             </div>
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="dot"></div>
-                <div>
-                  <div class="item-title">○○フラワー 川崎店へ会報誌掲載内容の確認電話</div>
-                  <div class="muted">10:00 / 担当: 佐藤 / 優先度: 高</div>
-                </div>
-                <span class="badge warning">本日</span>
+          </div>
+
+          <div class="task-grid">
+            <button class="task-card task-card--alert" type="button" data-view="membersView">
+              <div class="task-card__head">
+                <span class="task-card__badge">要確認</span>
+                <span class="task-card__count">4件</span>
               </div>
-              <div class="timeline-item">
-                <div class="dot"></div>
-                <div>
-                  <div class="item-title">△△写真館 横浜北店の掲示物未設置フォロー</div>
-                  <div class="muted">11:30 / 担当: 山田 / 前回連絡から 124日</div>
-                </div>
-                <span class="badge danger">期限超過</span>
+              <h3>新規友達の初期設定がまだ</h3>
+              <p>初期設定未完了の登録者を確認し、対応状況を把握します。</p>
+            </button>
+
+            <button class="task-card" type="button" data-view="surveySendView">
+              <div class="task-card__head">
+                <span class="task-card__badge">予定</span>
+                <span class="task-card__count">7件</span>
               </div>
-              <div class="timeline-item">
-                <div class="dot"></div>
-                <div>
-                  <div class="item-title">加盟店からの紹介 3件を会員台帳と照合</div>
-                  <div class="muted">14:00 / 担当: 鈴木</div>
-                </div>
-                <span class="badge">確認待ち</span>
+              <h3>アンケート送付日が近い</h3>
+              <p>送付対象者を確認し、定期アンケート送信画面へ移動します。</p>
+            </button>
+
+            <button class="task-card task-card--warning" type="button" data-view="surveyResultsView">
+              <div class="task-card__head">
+                <span class="task-card__badge">通知</span>
+                <span class="task-card__count">3件</span>
               </div>
-            </div>
+              <h3>要対応の回答あり</h3>
+              <p>退会希望、情報変更、チラシ指摘ありの回答を確認します。</p>
+            </button>
+
+            <button class="task-card task-card--danger" type="button" data-view="membersView">
+              <div class="task-card__head">
+                <span class="task-card__badge">重要</span>
+                <span class="task-card__count">2件</span>
+              </div>
+              <h3>ブロック検知あり</h3>
+              <p>ブロックが検知された登録者を一覧で確認します。</p>
+            </button>
           </div>
 
-          <div class="panel">
-            <div class="panel-header">
-              <h2>最近の加盟店更新</h2>
-              <button class="text-btn" data-page-link="merchants">加盟店一覧へ</button>
-            </div>
-            <table class="table">
-              <thead>
-                <tr><th>加盟店</th><th>更新内容</th><th>更新者</th><th>更新日時</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>さくら美容室 仙台南店</td><td>特典内容変更</td><td>加盟店ポータル</td><td>3/8 09:12</td></tr>
-                <tr><td>藤田仏具店 長野中央店</td><td>営業時間変更</td><td>営業事務</td><td>3/8 08:45</td></tr>
-                <tr><td>ハッピーギフト 盛岡店</td><td>会報誌掲載原稿更新</td><td>制作担当</td><td>3/7 17:20</td></tr>
-                <tr><td>花彩堂 福岡東店</td><td>苦情対応完了</td><td>加盟店ポータル</td><td>3/7 16:05</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+          <div class="panel-grid">
+            <section class="panel">
+              <div class="panel__header">
+                <h3 class="panel__title">運用サマリー</h3>
+              </div>
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <div class="stat-card__label">登録者数</div>
+                  <div class="stat-card__value">128</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card__label">初期設定完了</div>
+                  <div class="stat-card__value">124</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card__label">未回答</div>
+                  <div class="stat-card__value">19</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card__label">ブロック検知</div>
+                  <div class="stat-card__value">2</div>
+                </div>
+              </div>
+            </section>
 
-        <div class="grid cols-3">
-          <div class="panel">
-            <div class="panel-header"><h2>未回答の加盟店</h2></div>
-            <div class="list">
-              <div class="list-row"><span>○○フラワー 川崎店</span><span class="badge">会報誌</span></div>
-              <div class="list-row"><span>セレモ平安 茅ヶ崎</span><span class="badge">定期確認</span></div>
-              <div class="list-row"><span>△△写真館 横浜北店</span><span class="badge danger">改善依頼</span></div>
-              <div class="list-row"><span>寿ギフト 柏店</span><span class="badge">掲示報告</span></div>
-            </div>
+            <section class="panel">
+              <div class="panel__header">
+                <h3 class="panel__title">直近の通知対象</h3>
+              </div>
+              <div class="simple-list">
+                <div class="simple-list__item">
+                  <div>
+                    <div class="simple-list__title">山田 花子</div>
+                    <div class="simple-list__meta">会員継続: 継続しない</div>
+                  </div>
+                  <span class="pill pill--danger">要確認</span>
+                </div>
+                <div class="simple-list__item">
+                  <div>
+                    <div class="simple-list__title">佐藤 一郎</div>
+                    <div class="simple-list__meta">登録情報: 変更あり</div>
+                  </div>
+                  <span class="pill pill--warning">変更</span>
+                </div>
+                <div class="simple-list__item">
+                  <div>
+                    <div class="simple-list__title">高橋 美咲</div>
+                    <div class="simple-list__meta">チラシ確認: 指摘あり</div>
+                  </div>
+                  <span class="pill pill--warning">指摘</span>
+                </div>
+              </div>
+            </section>
           </div>
-          <div class="panel">
-            <div class="panel-header"><h2>エリア別加盟店数</h2></div>
-            <div class="fake-chart">
-              <div class="bar-row"><span>関東</span><div class="bar"><i style="width:82%"></i></div><b>248</b></div>
-              <div class="bar-row"><span>中部</span><div class="bar"><i style="width:56%"></i></div><b>169</b></div>
-              <div class="bar-row"><span>関西</span><div class="bar"><i style="width:48%"></i></div><b>144</b></div>
-              <div class="bar-row"><span>東北</span><div class="bar"><i style="width:31%"></i></div><b>93</b></div>
-            </div>
-          </div>
-          <div class="panel">
-            <div class="panel-header"><h2>運用メモ</h2></div>
-            <div class="note-box">
-              <p>・ポータル利用率は全加盟店の約46%を想定</p>
-              <p>・未利用店は電話/メールで従業員が代理入力</p>
-              <p>・会報誌締切は毎月20日（ダミー）</p>
-              <p>・加盟店からの更新は承認後に公開反映</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="page" data-page="merchants">
-        <div class="panel">
-          <div class="panel-header">
-            <h2>加盟店一覧</h2>
-            <div class="filters">
-              <span class="chip active">すべて</span>
-              <span class="chip">会報誌確認待ち</span>
-              <span class="chip">定期フォロー対象</span>
-              <span class="chip">ポータル未利用</span>
-              <span class="chip">紹介実績あり</span>
-            </div>
-          </div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>加盟店名</th><th>エリア</th><th>運用区分</th><th>特典</th><th>最終連絡日</th><th>ステータス</th><th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>○○フラワー 川崎店</td><td>関東</td><td>ポータル利用</td><td>供花 5%OFF</td><td>2025/12/21</td><td><span class="badge warning">会報誌確認待ち</span></td>
-                <td><button class="text-btn" data-page-link="merchant-detail">詳細</button></td>
-              </tr>
-              <tr>
-                <td>△△写真館 横浜北店</td><td>関東</td><td>電話中心</td><td>遺影写真 1枚無料</td><td>2025/11/04</td><td><span class="badge danger">改善依頼中</span></td>
-                <td><button class="text-btn" data-page-link="merchant-detail">詳細</button></td>
-              </tr>
-              <tr>
-                <td>さくら美容室 仙台南店</td><td>東北</td><td>ポータル利用</td><td>着付け 10%OFF</td><td>2026/03/08</td><td><span class="badge success">更新申請あり</span></td>
-                <td><button class="text-btn" data-page-link="merchant-detail">詳細</button></td>
-              </tr>
-              <tr>
-                <td>藤田仏具店 長野中央店</td><td>中部</td><td>メール中心</td><td>位牌刻印 無料</td><td>2026/02/27</td><td><span class="badge">通常</span></td>
-                <td><button class="text-btn" data-page-link="merchant-detail">詳細</button></td>
-              </tr>
-              <tr>
-                <td>花彩堂 福岡東店</td><td>九州</td><td>ポータル利用</td><td>供花配送 無料</td><td>2026/03/07</td><td><span class="badge success">対応完了</span></td>
-                <td><button class="text-btn" data-page-link="merchant-detail">詳細</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="page" data-page="merchant-detail">
-        <div class="grid cols-3 detail-grid">
-          <div class="panel span-2">
-            <div class="panel-header">
-              <h2>加盟店詳細</h2>
+        <section id="membersView" class="view">
+          <div class="panel">
+            <div class="panel__header panel__header--stack">
               <div>
-                <span class="badge success">契約中</span>
-                <span class="badge">ポータル利用店</span>
+                <h2 class="section-title">登録者一覧</h2>
+                <p class="section-text">登録状況、初期設定、ブロック検知の状態を確認できます。</p>
               </div>
             </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>画像</th>
+                    <th>登録名</th>
+                    <th>ユーザーID</th>
+                    <th>初期設定</th>
+                    <th>定期アンケート</th>
+                    <th>ブロック検知</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img class="avatar" src="https://picsum.photos/seed/member01/64/64" alt=""></td>
+                    <td>山田 花子</td>
+                    <td><span class="mono">U001AABBCCDDEE</span></td>
+                    <td><span class="pill pill--success">完了</span></td>
+                    <td><span class="pill">回答済み</span></td>
+                    <td><span class="pill pill--neutral">なし</span></td>
+                  </tr>
+                  <tr>
+                    <td><img class="avatar" src="https://picsum.photos/seed/member02/64/64" alt=""></td>
+                    <td>佐藤 一郎</td>
+                    <td><span class="mono">U002AABBCCDDEE</span></td>
+                    <td><span class="pill pill--warning">未完了</span></td>
+                    <td><span class="pill pill--warning">未回答</span></td>
+                    <td><span class="pill pill--neutral">なし</span></td>
+                  </tr>
+                  <tr>
+                    <td><img class="avatar" src="https://picsum.photos/seed/member03/64/64" alt=""></td>
+                    <td>高橋 美咲</td>
+                    <td><span class="mono">U003AABBCCDDEE</span></td>
+                    <td><span class="pill pill--success">完了</span></td>
+                    <td><span class="pill">回答済み</span></td>
+                    <td><span class="pill pill--danger">検知あり</span></td>
+                  </tr>
+                  <tr>
+                    <td><img class="avatar" src="https://picsum.photos/seed/member04/64/64" alt=""></td>
+                    <td>鈴木 恒一</td>
+                    <td><span class="mono">U004AABBCCDDEE</span></td>
+                    <td><span class="pill pill--success">完了</span></td>
+                    <td><span class="pill pill--warning">未回答</span></td>
+                    <td><span class="pill pill--neutral">なし</span></td>
+                  </tr>
+                  <tr>
+                    <td><img class="avatar" src="https://picsum.photos/seed/member05/64/64" alt=""></td>
+                    <td>中村 理恵</td>
+                    <td><span class="mono">U005AABBCCDDEE</span></td>
+                    <td><span class="pill pill--warning">未完了</span></td>
+                    <td><span class="pill pill--neutral">送付前</span></td>
+                    <td><span class="pill pill--neutral">なし</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="surveySendView" class="view">
+          <div class="panel">
+            <div class="panel__header panel__header--stack">
+              <div>
+                <h2 class="section-title">定期アンケート送付</h2>
+                <p class="section-text">全員に送付する前提の画面イメージです。</p>
+              </div>
+            </div>
+
             <div class="form-grid">
-              <label>加盟店名<input value="○○フラワー 川崎店" /></label>
-              <label>法人名<input value="株式会社サンプルフラワー" /></label>
-              <label>担当者<input value="田中 花子" /></label>
-              <label>電話番号<input value="044-123-4567" /></label>
-              <label>メールアドレス<input value="shop-kawasaki@example.jp" /></label>
-              <label>最終連絡日<input value="2025-12-21" /></label>
-              <label class="span-2">住所<input value="神奈川県川崎市川崎区..." /></label>
-              <label class="span-2">会員特典<input value="供花 5%OFF / 初回配送無料" /></label>
-              <label class="span-2">掲載紹介文<textarea>地域密着で供花・法要装花を承っております。会員さまには供花5%OFFをご提供。</textarea></label>
-            </div>
-            <div class="actions">
-              <button class="btn btn-secondary">下書き保存</button>
-              <button class="btn btn-primary">更新反映</button>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="panel-header"><h2>右サイド情報</h2></div>
-            <div class="list">
-              <div class="list-row"><span>会報誌掲載</span><span class="badge success">確認済み</span></div>
-              <div class="list-row"><span>掲示物設置</span><span class="badge warning">写真未提出</span></div>
-              <div class="list-row"><span>紹介件数(今月)</span><strong>2件</strong></div>
-              <div class="list-row"><span>苦情件数(累計)</span><strong>1件</strong></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid cols-2">
-          <div class="panel">
-            <div class="panel-header"><h2>対応履歴</h2></div>
-            <div class="timeline compact">
-              <div class="timeline-item"><div class="dot"></div><div><div class="item-title">会報誌掲載内容の確認</div><div class="muted">2026/03/01 / 電話 / 担当: 佐藤</div></div></div>
-              <div class="timeline-item"><div class="dot"></div><div><div class="item-title">掲示物設置依頼メール送信</div><div class="muted">2026/02/25 / メール / 担当: 山田</div></div></div>
-              <div class="timeline-item"><div class="dot"></div><div><div class="item-title">定期フォロー（変更なし）</div><div class="muted">2025/12/21 / 電話 / 担当: 鈴木</div></div></div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="panel-header"><h2>会報誌・POP関連</h2></div>
-            <div class="card-stack">
-              <div class="sub-card">
-                <div class="sub-card-title">次号会報誌 原稿</div>
-                <div class="muted">締切: 2026/03/20 / 状態: 確認済み</div>
+              <div class="field">
+                <label>送付タイトル</label>
+                <input type="text" value="定期確認アンケートのお願い" readonly>
               </div>
-              <div class="sub-card">
-                <div class="sub-card-title">店舗POP（A4）</div>
-                <div class="muted">最終出力: 2026/02/15 / 状態: 再送待ち</div>
-              </div>
-              <div class="sub-card">
-                <div class="sub-card-title">掲載画像</div>
-                <div class="muted">店舗外観 1枚 / 供花写真 2枚</div>
+              <div class="field">
+                <label>送付予定日</label>
+                <input type="text" value="2026-03-20 10:00" readonly>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="page" data-page="members">
-        <div class="panel">
-          <div class="panel-header"><h2>会員一覧</h2></div>
-          <table class="table">
-            <thead><tr><th>会員番号</th><th>氏名</th><th>入会日</th><th>入会経路</th><th>紹介元加盟店</th><th>状態</th></tr></thead>
-            <tbody>
-              <tr><td>M-000128</td><td>山田 太郎</td><td>2026/02/18</td><td>葬祭サービス利用</td><td>○○フラワー 川崎店</td><td><span class="badge success">有効</span></td></tr>
-              <tr><td>M-000129</td><td>鈴木 花子</td><td>2026/02/20</td><td>紹介登録</td><td>花彩堂 福岡東店</td><td><span class="badge success">有効</span></td></tr>
-              <tr><td>M-000130</td><td>田中 一郎</td><td>2026/02/28</td><td>冠婚サービス利用</td><td>-</td><td><span class="badge">仮登録</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+            <div class="field">
+              <label>送付メッセージ</label>
+              <textarea rows="8" readonly>いつもありがとうございます。
+以下の定期確認アンケートへのご回答をお願いします。
+会員継続の意思、登録情報の変更有無、チラシ内容の確認についてご回答ください。</textarea>
+            </div>
 
-      <section class="page" data-page="magazine">
-        <div class="grid cols-2">
-          <div class="panel">
-            <div class="panel-header"><h2>次号進行状況</h2></div>
-            <div class="list">
-              <div class="list-row"><span>掲載対象加盟店</span><strong>120店</strong></div>
-              <div class="list-row"><span>確認済み</span><strong>68店</strong></div>
-              <div class="list-row"><span>修正あり</span><strong>14店</strong></div>
-              <div class="list-row"><span>未回答</span><strong>38店</strong></div>
+            <div class="field">
+              <label>対象者</label>
+              <div class="selection-box">
+                <span class="selection-chip">全登録者 128名</span>
+                <span class="selection-chip">初期設定完了 124名</span>
+                <span class="selection-chip">未回答者優先 19名</span>
+              </div>
+            </div>
+
+            <div class="preview-card">
+              <div class="preview-card__label">送付プレビュー</div>
+              <div class="line-preview">
+                <div class="line-preview__bubble">
+                  いつもありがとうございます。<br>
+                  以下の定期確認アンケートへのご回答をお願いします。<br><br>
+                  https://survey.example.jp/periodic/202603
+                </div>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button class="button button--primary" type="button">全員に送付</button>
+              <button class="button button--secondary" type="button">送付対象を確認</button>
             </div>
           </div>
+        </section>
+
+        <section id="surveyResultsView" class="view">
           <div class="panel">
-            <div class="panel-header"><h2>掲載確認待ち</h2></div>
-            <div class="list">
-              <div class="list-row"><span>○○フラワー 川崎店</span><span class="badge warning">未回答</span></div>
-              <div class="list-row"><span>セレモ平安 茅ヶ崎</span><span class="badge warning">未回答</span></div>
-              <div class="list-row"><span>寿ギフト 柏店</span><span class="badge">修正依頼</span></div>
+            <div class="panel__header panel__header--stack">
+              <div>
+                <h2 class="section-title">アンケート回答集計</h2>
+                <p class="section-text">登録者単位で回答状況と内容を確認できます。</p>
+              </div>
+            </div>
+
+            <div class="cards-stack">
+              <article class="member-card">
+                <div class="member-card__head">
+                  <div class="member-card__identity">
+                    <img class="avatar avatar--lg" src="https://picsum.photos/seed/survey01/80/80" alt="">
+                    <div>
+                      <h3>山田 花子</h3>
+                      <p>最終回答日: 2026-03-05 14:20</p>
+                    </div>
+                  </div>
+                  <span class="pill pill--danger">要対応</span>
+                </div>
+
+                <div class="answer-grid">
+                  <div class="answer-item">
+                    <div class="answer-item__label">会員継続</div>
+                    <div class="answer-item__value answer-item__value--danger">継続しない</div>
+                  </div>
+                  <div class="answer-item">
+                    <div class="answer-item__label">情報変更</div>
+                    <div class="answer-item__value">変更なし</div>
+                  </div>
+                  <div class="answer-item">
+                    <div class="answer-item__label">チラシ確認</div>
+                    <div class="answer-item__value">指摘なし</div>
+                  </div>
+                  <div class="answer-item answer-item--full">
+                    <div class="answer-item__label">自由記述</div>
+                    <div class="answer-item__value">今月末で会員終了を希望します。</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="member-card">
+                <div class="member-card__head">
+                  <div class="member-card__identity">
+                    <img class="avatar avatar--lg" src="https://picsum.photos/seed/survey02/80/80" alt="">
+                    <div>
+                      <h3>佐藤 一郎</h3>
+                      <p>最終回答日: 2026-03-04 09:10</p>
+                    </div>
+                  </div>
+                  <span class="pill pill--warning">変更あり</span>
+                </div>
+
+                <div class="answer-grid">
+                  <div class="answer-item">
+                    <div class="answer-item__label">会員継続</div>
+                    <div class="answer-item__value">継続する</div>
+                  </div>
+                  <div class="answer-item">
+                    <div class="answer-item__label">情報変更</div>
+                    <div class="answer-item__value answer-item__value--warning">変更あり</div>
+                  </div>
+                  <div class="answer-item">
+                    <div class="answer-item__label">チラシ確認</div>
+                    <div class="answer-item__value">指摘なし</div>
+                  </div>
+                  <div class="answer-item answer-item--full">
+                    <div class="answer-item__label">自由記述</div>
+                    <div class="answer-item__value">電話番号を変更したいです。</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="member-card">
+                <div class="member-card__head">
+                  <div class="member-card__identity">
+                    <img class="avatar avatar--lg" src="https://picsum.photos/seed/survey03/80/80" alt="">
+                    <div>
+                      <h3>高橋 美咲</h3>
+                      <p>最終回答日: 未回答</p>
+                    </div>
+                  </div>
+                  <span class="pill pill--neutral">未回答</span>
+                </div>
+
+                <div class="answer-grid">
+                  <div class="answer-item">
+                    <div class="answer-item__label">会員継続</div>
+                    <div class="answer-item__value">-</div>
+                  </div>
+                  <div class="answer-item">
+                    <div class="answer-item__label">情報変更</div>
+                    <div class="answer-item__value">-</div>
+                  </div>
+                  <div class="answer-item">
+                    <div class="answer-item__label">チラシ確認</div>
+                    <div class="answer-item__value">-</div>
+                  </div>
+                  <div class="answer-item answer-item--full">
+                    <div class="answer-item__label">自由記述</div>
+                    <div class="answer-item__value">未回答</div>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="page" data-page="notifications">
-        <div class="grid cols-2">
-          <div class="panel">
-            <div class="panel-header"><h2>通達作成</h2></div>
-            <div class="form-grid">
-              <label class="span-2">件名<input value="会報誌掲載内容ご確認のお願い" /></label>
-              <label>宛先区分<select><option>全加盟店</option><option>関東エリア</option><option>会報誌掲載対象のみ</option></select></label>
-              <label>送信方法<select><option>メール＋ポータル通知</option><option>メールのみ</option></select></label>
-              <label class="span-2">本文<textarea>次号会報誌に掲載予定の内容をご確認ください。ポータルからご回答をお願いいたします。</textarea></label>
+        <section id="staffView" class="view">
+          <div class="panel panel--compact">
+            <div class="panel__header panel__header--stack">
+              <div>
+                <h2 class="section-title">従業員追加</h2>
+                <p class="section-text">管理画面にログインする従業員アカウントの追加画面イメージです。</p>
+              </div>
             </div>
-            <div class="actions"><button class="btn btn-secondary">下書き保存</button><button class="btn btn-primary">送信</button></div>
-          </div>
-          <div class="panel">
-            <div class="panel-header"><h2>送信履歴</h2></div>
-            <table class="table">
-              <thead><tr><th>件名</th><th>対象</th><th>送信日</th><th>状態</th></tr></thead>
-              <tbody>
-                <tr><td>会報誌掲載内容ご確認のお願い</td><td>掲載対象 120店</td><td>2026/03/01</td><td><span class="badge success">送信済み</span></td></tr>
-                <tr><td>掲示物設置報告のお願い</td><td>全加盟店</td><td>2026/02/15</td><td><span class="badge success">送信済み</span></td></tr>
-                <tr><td>年末年始営業時間確認</td><td>全加盟店</td><td>2025/12/01</td><td><span class="badge">完了</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
 
-      <section class="page" data-page="complaints">
-        <div class="panel">
-          <div class="panel-header"><h2>苦情・改善依頼</h2></div>
-          <table class="table">
-            <thead><tr><th>受付日</th><th>加盟店</th><th>内容</th><th>期限</th><th>状態</th></tr></thead>
-            <tbody>
-              <tr><td>2026/03/03</td><td>△△写真館 横浜北店</td><td>特典適用の説明不足</td><td>2026/03/10</td><td><span class="badge danger">対応中</span></td></tr>
-              <tr><td>2026/02/26</td><td>花彩堂 福岡東店</td><td>接客態度に関するご意見</td><td>2026/03/05</td><td><span class="badge success">完了</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+            <div class="form-grid form-grid--single">
+              <div class="field">
+                <label>氏名</label>
+                <input type="text" value="田中 次郎" readonly>
+              </div>
+              <div class="field">
+                <label>メールアドレス</label>
+                <input type="text" value="tanaka@example.jp" readonly>
+              </div>
+              <div class="field">
+                <label>権限</label>
+                <input type="text" value="一般管理者" readonly>
+              </div>
+              <div class="field">
+                <label>初期パスワード</label>
+                <input type="text" value="TempPass2026!" readonly>
+              </div>
+            </div>
 
-      <section class="page" data-page="referrals">
-        <div class="grid cols-2">
-          <div class="panel">
-            <div class="panel-header"><h2>紹介実績</h2></div>
-            <table class="table">
-              <thead><tr><th>紹介日</th><th>加盟店</th><th>被紹介者</th><th>成立日</th><th>紹介料</th><th>状態</th></tr></thead>
-              <tbody>
-                <tr><td>2026/02/10</td><td>○○フラワー 川崎店</td><td>山田 太郎</td><td>2026/02/18</td><td>¥10,000</td><td><span class="badge success">支払対象</span></td></tr>
-                <tr><td>2026/02/13</td><td>花彩堂 福岡東店</td><td>鈴木 花子</td><td>2026/02/20</td><td>¥10,000</td><td><span class="badge success">支払対象</span></td></tr>
-                <tr><td>2026/03/01</td><td>藤田仏具店 長野中央店</td><td>高橋 次郎</td><td>-</td><td>-</td><td><span class="badge">照合中</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="panel">
-            <div class="panel-header"><h2>月次集計</h2></div>
-            <div class="list">
-              <div class="list-row"><span>2月 紹介成立件数</span><strong>18件</strong></div>
-              <div class="list-row"><span>2月 支払予定額</span><strong>¥180,000</strong></div>
-              <div class="list-row"><span>今月 受付件数</span><strong>6件</strong></div>
+            <div class="action-row">
+              <button class="button button--primary" type="button">従業員を追加</button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="page" data-page="tasks">
-        <div class="panel">
-          <div class="panel-header"><h2>対応履歴・タスク一覧</h2></div>
-          <table class="table">
-            <thead><tr><th>期限</th><th>加盟店</th><th>内容</th><th>担当</th><th>状態</th></tr></thead>
-            <tbody>
-              <tr><td>2026/03/08</td><td>○○フラワー 川崎店</td><td>会報誌確認の電話</td><td>佐藤</td><td><span class="badge warning">本日対応</span></td></tr>
-              <tr><td>2026/03/07</td><td>△△写真館 横浜北店</td><td>改善依頼フォロー</td><td>山田</td><td><span class="badge danger">期限超過</span></td></tr>
-              <tr><td>2026/03/12</td><td>寿ギフト 柏店</td><td>掲示写真提出の再依頼</td><td>鈴木</td><td><span class="badge">未着手</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+        <section id="accountView" class="view">
+          <div class="panel panel--compact">
+            <div class="panel__header panel__header--stack">
+              <div>
+                <h2 class="section-title">ログイン情報変更</h2>
+                <p class="section-text">自身のログイン情報を変更する画面イメージです。</p>
+              </div>
+            </div>
 
-      <section class="page" data-page="settings">
-        <div class="grid cols-3">
-          <div class="panel"><div class="panel-header"><h2>マスタ</h2></div><div class="list"><div class="list-row"><span>エリア</span><span>9区分</span></div><div class="list-row"><span>業種</span><span>17種別</span></div><div class="list-row"><span>対応種別</span><span>12種別</span></div></div></div>
-          <div class="panel"><div class="panel-header"><h2>通知設定</h2></div><div class="list"><div class="list-row"><span>未回答リマインド</span><span>7日後</span></div><div class="list-row"><span>会報誌締切前通知</span><span>3日前</span></div></div></div>
-          <div class="panel"><div class="panel-header"><h2>権限</h2></div><div class="list"><div class="list-row"><span>管理者</span><span>3名</span></div><div class="list-row"><span>営業担当</span><span>12名</span></div><div class="list-row"><span>制作担当</span><span>4名</span></div></div></div>
-        </div>
-      </section>
-    </main>
+            <div class="form-grid form-grid--single">
+              <div class="field">
+                <label>現在のメールアドレス</label>
+                <input type="text" value="admin@example.jp" readonly>
+              </div>
+              <div class="field">
+                <label>新しいメールアドレス</label>
+                <input type="text" value="admin_new@example.jp" readonly>
+              </div>
+              <div class="field">
+                <label>現在のパスワード</label>
+                <input type="password" value="password" readonly>
+              </div>
+              <div class="field">
+                <label>新しいパスワード</label>
+                <input type="password" value="newpassword" readonly>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button class="button button--primary" type="button">ログイン情報を更新</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="logoutView" class="view">
+          <div class="panel panel--compact">
+            <div class="panel__header panel__header--stack">
+              <div>
+                <h2 class="section-title">ログアウト</h2>
+                <p class="section-text">ログアウト確認画面のイメージです。</p>
+              </div>
+            </div>
+
+            <div class="logout-card">
+              <p>現在ログイン中の管理者アカウントからログアウトします。</p>
+              <div class="action-row">
+                <button class="button button--primary" type="button">ログアウトする</button>
+                <button class="button button--secondary" data-view="dashboardView" type="button">戻る</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   </div>
 
-  <script src="admin.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
