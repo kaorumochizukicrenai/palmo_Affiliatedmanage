@@ -1,4 +1,12 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>確認ページ</title>
 <style>body{margin:0px;} iframe{border:none; width:100vw; height:100vh;}</style>
+</head>
+<body>
 <iframe id="test"></iframe>
 <script>
     const nowurl = window.location.href;
@@ -7,3 +15,4 @@
         document.getElementById("test").src = "https://test-lineautomation.f5.si/click.html?" + getparam[1];
     }
 </script>
+</body>
